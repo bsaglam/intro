@@ -7,6 +7,19 @@ export default class Categories extends Component {
         categories: [{ categoryId: 1, categoryName: "cat1" }, { categoryId: 2, categoryName: "cat2" }, { categoryId: 3, categoryName: "cat3" }],
         
     }
+
+    componentDidMount()
+    {
+        this.getCategories()
+    }
+
+    //Kategorilerin api den getirilmesi
+    getCategories = () =>{
+        fetch("http://localhost:3000/categories")
+        .then(response=>response.json())
+        .then(data=>this.setState({categories : data}))
+
+    }
  
     render() {
         return (

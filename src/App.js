@@ -8,8 +8,19 @@ import Products from './components/Products';
 export default class App extends Component {
 
   state = {
-    selectedCategory : ""
+    selectedCategory: "", products: []
   }
+  componentDidMount() {
+    this.getProducts()
+  }
+
+  getProducts = () =>
+  {
+    fetch("http://localhost:3000/products")
+    .then(response => response.json())
+    .then(data => this.setState({ products : data}))
+  }
+
   handleCategoryClick = (category) => {
     this.setState({ selectedCategory: category.categoryName })
   }
@@ -21,11 +32,11 @@ export default class App extends Component {
             <Col><Navi /></Col>
           </Row>
           <Row>
-            <Col xs="3"><Categories selectedCategory={this.state.selectedCategory} categoryClick={this.handleCategoryClick}/></Col>
-            <Col xs="9"><Products /></Col>
+            <Col xs="3"><Categories selectedCategory={this.state.selectedCategory} categoryClick={this.handleCategoryClick} /></Col>
+            <Col xs="9"><Products selectedCategory={this.state.selectedCategory} products={this.state.products}/></Col>
           </Row>
         </Container>
-      </div >
+      </div>
     )
   }
 }
