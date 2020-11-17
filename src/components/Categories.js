@@ -18,7 +18,6 @@ export default class Categories extends Component {
         fetch("http://localhost:3000/categories")
         .then(response=>response.json())
         .then(data=>this.setState({categories : data}))
-
     }
  
     render() {
@@ -27,10 +26,10 @@ export default class Categories extends Component {
                 <ListGroup>
                     {this.state.categories.map((category) =>
                         (
-                            <ListGroupItem key={category.categoryId} onClick = {()=>this.props.categoryClick(category)}>{category.categoryName}</ListGroupItem>
+                            <ListGroupItem active = {category.categoryName === this.props.selectedCategory ? true : false} key={category.categoryId} onClick = {()=>this.props.categoryClick(category)}>{category.categoryName}</ListGroupItem>
                         ))}
                 </ListGroup>
-                <h4>{this.props.selectedCategory}</h4>
+                {/* <h4>{this.props.selectedCategory}</h4> */}
             </div>
         )
     }

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
-import { Table } from 'reactstrap'
+import { Table, ButtonToggle } from 'reactstrap'
 
 export default class Products extends Component {
+    
     render() {
         return (
             <div>
@@ -13,6 +14,7 @@ export default class Products extends Component {
                             <th>Product Name</th>
                             <th>Quantity Per Unit</th>
                             <th>Units In Stock</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -23,6 +25,7 @@ export default class Products extends Component {
                                 <td>{products.productName}</td>
                                 <td>{products.quantityPerUnit}</td>
                                 <td>{products.unitsInStock}</td>
+                                <td><ButtonToggle color="primary" onClick={()=>this.props.addToCart(products)}>Add</ButtonToggle></td>
                             </tr>
                         ))}
                     </tbody>
