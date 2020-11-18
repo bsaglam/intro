@@ -32,6 +32,7 @@ export default class App extends Component {
     this.getProducts(category.id)
   }
 
+  //sepete ürün ekleme
   addToCart = (product) => {
     let newCart = this.state.cart;
     var addedItem = newCart.find(i=>i.product.id === product.id)
@@ -46,12 +47,16 @@ export default class App extends Component {
     var deneme=this.state.cart
     console.log(deneme)
   }
-
+  //seepetten ürün silme
+  removeFromCart = (product) =>{
+    let filterCart = this.state.cart.filter(c=>c.product.id !== product.id);
+    this.setState({ cart : filterCart})
+  }
   render() {
     return (
       <div>
         <Container>
-          <Navi cart={this.state.cart}/>
+          <Navi cart={this.state.cart} removeFromCart={this.removeFromCart}/>
           <Row>
             <Col xs="3"><Categories selectedCategory={this.state.selectedCategory} categoryClick={this.handleCategoryClick} /></Col>
             <Col xs="9"><Products selectedCategory={this.state.selectedCategory} products={this.state.products} addToCart={this.addToCart}/></Col>

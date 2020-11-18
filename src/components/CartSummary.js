@@ -8,7 +8,6 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap'
-import { render } from 'react-dom'
 
 export default class CartSummary extends Component {
 
@@ -21,8 +20,9 @@ export default class CartSummary extends Component {
         <DropdownMenu right>
           {this.props.cart.map(cartItem => (
             <DropdownItem key={cartItem.product.id}>
+              <Badge color="danger" onClick={()=>this.props.removeFromCart(cartItem.product)}>X</Badge>
               {cartItem.product.productName}
-              <Badge>{cartItem.quantity}</Badge>
+              <Badge color="success">{cartItem.quantity}</Badge>
             </DropdownItem>
           ))}
           <DropdownItem divider />
