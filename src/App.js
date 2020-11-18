@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'reactstrap'
 import Navi from './components/Navi'
 import Categories from './components/Categories';
 import Products from './components/Products';
+import alertify from 'alertifyjs';
 
 
 export default class App extends Component {
@@ -44,8 +45,7 @@ export default class App extends Component {
     }
     
     this.setState({cart : newCart}) // oluşan bu state i de navi ye göndermemiz gerekiyor.
-    var deneme=this.state.cart
-    console.log(deneme)
+    alertify.success(product.productName +" added")
   }
   //seepetten ürün silme
   removeFromCart = (product) =>{
