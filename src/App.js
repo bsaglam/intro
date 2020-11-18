@@ -36,13 +36,15 @@ export default class App extends Component {
     let newCart = this.state.cart;
     var addedItem = newCart.find(i=>i.product.id === product.id)
     if(addedItem){
-      addedItem.quantity+=1
+      addedItem.quantity+=1 // addedItem daki bu değişiklik state içindeki quantityi nasıl etkiliyor anlamıyorum
     }
     else{
       newCart.push({product:product,quantity:1});
     }
     
     this.setState({cart : newCart}) // oluşan bu state i de navi ye göndermemiz gerekiyor.
+    var deneme=this.state.cart
+    console.log(deneme)
   }
 
   render() {
