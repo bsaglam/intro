@@ -8,6 +8,7 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap'
+import {Link} from 'react-router-dom'
 
 export default class CartSummary extends Component {
 
@@ -27,7 +28,7 @@ export default class CartSummary extends Component {
           ))}
           <DropdownItem divider />
           <DropdownItem>
-            Reset
+            <Link to="cart">Sepete Git</Link>
           </DropdownItem>
         </DropdownMenu>
       </UncontrolledDropdown>
